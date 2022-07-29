@@ -1,17 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../img/logo.svg";
 
-const Header = () => {
+const Header = ({ token, setUser }) => {
+  const navigate = useNavigate();
   return (
     <header>
       <div className="top-header">
         <img src={logo} alt="logo Vinted" />
-
-        <button>S'inscrire</button>
-        <button>
-          <Link to={`/signup`}>Se connecter</Link>
-        </button>
-        <button>Vends maintenant</button>
+        {token === null ? (
+          <>
+            <button>
+              <Link to="/login">Se connecter</Link>
+            </button>
+            <button>
+              <Link to="/signup">S'inscrire'</Link>
+            </button>
+            <button>Vends maintenant</button>
+          </>
+        ) : (
+          <button
+            onClick={() => {
+              setUser(null);
+              navigate("/");
+            }}
+          >
+            Se déconnecter
+          </button>
+        )}
       </div>
       <div className="bottom-header">
         <ul>

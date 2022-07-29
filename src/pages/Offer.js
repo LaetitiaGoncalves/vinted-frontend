@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "../components/Header";
 
 const Offer = () => {
   const { offerId } = useParams();
@@ -24,7 +23,6 @@ const Offer = () => {
     <div>En cours de chargement</div>
   ) : (
     <div>
-      <Header />
       <h2> {data.product_name}</h2>
       <p>{data.product_price}</p>
       <div>

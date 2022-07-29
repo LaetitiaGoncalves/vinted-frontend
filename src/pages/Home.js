@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "../components/Header.js";
 
 import { Link } from "react-router-dom";
 
@@ -26,7 +25,6 @@ const Home = () => {
     <div>En cours de chargement</div>
   ) : (
     <div className="page-home">
-      <Header />
       <main>
         <section className="main-section">
           <div className="banner">

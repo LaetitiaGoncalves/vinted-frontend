@@ -46,3 +46,10 @@
     color: black;
     margin: 0px 0px;
 }
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    width: 50%;
+}
