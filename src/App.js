@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import Publish from "./pages/Publish";
 
 // components
 import Header from "./components/Header";
@@ -31,6 +33,8 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/offer/:offerId" element={<Offer />} />
           <Route path="/signup" element={<Signup setUser={setUser} />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route path="/publish" element={<Publish token={token} />} />
         </Routes>
       </Router>
     </div>

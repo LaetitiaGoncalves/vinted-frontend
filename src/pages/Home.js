@@ -30,7 +30,9 @@ const Home = () => {
           <div className="banner">
             <div className="banner-content">
               <h1>Prêts à faire du tri dans vos placards ?</h1>
-              <button>Vends maintenant</button>
+              <Link to={"/publish"}>
+                <button>Vends maintenant</button>
+              </Link>
               <p>Découvrir comment ça marche</p>
             </div>
           </div>
@@ -38,10 +40,10 @@ const Home = () => {
         <section className="offers-section">
           <h2>Articles populaires</h2>
           <div className="offers-container">
-            {data.offers.map((offer) => {
+            {data.offers.map((offer, index) => {
               return (
                 <Link to={`/offer/${offer._id}`}>
-                  <div className="card">
+                  <div className="card" key={index}>
                     <h2>{offer.product_name}</h2>
                     <img src={offer.product_image.secure_url} alt="" />
                   </div>
