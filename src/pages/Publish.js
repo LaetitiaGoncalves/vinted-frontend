@@ -5,6 +5,14 @@ const Publish = ({ token }) => {
   const [picture, setPicture] = useState(null);
   const [data, setData] = useState(null);
   const [isPictureSending, setIsPictureSending] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [condition, setCondition] = useState("");
+  const [city, setCity] = useState("");
+  const [brand, setBrand] = useState("");
+  const [size, setSize] = useState("");
+  const [color, setColor] = useState("");
 
   const handleSentPicture = async (event) => {
     try {
@@ -15,7 +23,19 @@ const Publish = ({ token }) => {
 
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
-        formData,
+
+        {
+          title,
+          description,
+          price,
+          condition,
+          city,
+          brand,
+          size,
+          color,
+          picture: formData,
+        },
+
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -52,23 +72,62 @@ const Publish = ({ token }) => {
           <input type="submit" />
         </form>
         <div>
-          <input type="text" name="title" id="title" placeholder="Titre" />
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Titre"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
           <input
             type="text"
             name="description"
             id="description"
             placeholder="Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
         </div>
         <div>
-          <input type="text" placeholder="marque" />
-          <input type="text" placeholder="taille" />
-          <input type="text" placeholder="couleur" />
-          <input type="text" placeholder="Etat" />
-          <input type="text" placeholder="Lieu" />
+          <input
+            type="text"
+            placeholder="marque"
+            value={brand}
+            onChange={(e) => setBrand(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="taille"
+            value={size}
+            onChange={(e) => setSize(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="couleur"
+            value={color}
+            onChange={(e) => setColor(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Etat"
+            value={condition}
+            onChange={(e) => setCondition(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Lieu"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
         </div>
         <div>
-          <input type="text" placeholder="Prix" />
+          <input
+            type="text"
+            placeholder="Prix"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
         </div>
       </div>
     </div>
