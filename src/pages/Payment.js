@@ -10,12 +10,12 @@ const stripePromise = loadStripe(
 function Payment() {
   const location = useLocation();
   const { title } = location.state;
-  const { price } = location.state;
+  const { amount } = location.state;
   return (
     <div className="App">
       <h1>Résumé de la commande</h1>
       <p>{title}</p>
-      <p>{price}</p>
+      <p>{amount}</p>
 
       <Elements stripe={stripePromise}>
         <CheckoutForm />

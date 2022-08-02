@@ -1,7 +1,7 @@
 import "./App.css";
 import Cookies from "js-cookie";
 import { useState } from "react";
-import { loadStripe } from "@stripe/stripe-js";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // pages
@@ -17,9 +17,7 @@ import Header from "./components/Header";
 
 const App = () => {
   const [token, setToken] = useState(Cookies.get("userToken") || null);
-  const stripePromise = loadStripe(
-    "pk_test_51HCObyDVswqktOkX6VVcoA7V2sjOJCUB4FBt3EOiAdSz5vWudpWxwcSY8z2feWXBq6lwMgAb5IVZZ1p84ntLq03H00LDVc2RwP"
-  );
+
   const setUser = (tokenToCheck) => {
     if (tokenToCheck !== null) {
       Cookies.set("userToken", tokenToCheck, { expires: 7 });
@@ -42,10 +40,7 @@ const App = () => {
             path="/publish"
             element={<Publish token={token} setUser={setUser} />}
           />
-          <Route
-            path="/payment"
-            element={<Payment stripe={stripePromise} />}
-          ></Route>
+          <Route path="/payment" element={<Payment />}></Route>
         </Routes>
       </Router>
     </div>

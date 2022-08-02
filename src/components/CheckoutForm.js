@@ -3,7 +3,7 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 
 import axios from "axios";
 
-const CheckOutForm = () => {
+const CheckOutForm = ({ productName, totalPrice }) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -19,9 +19,9 @@ const CheckOutForm = () => {
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/payment",
         {
-          stripToken: stripeResponse.token.id,
-          title: cardElement.title,
-          amount: cardElement.amount,
+          token: stripeResponse.token.id,
+          title: cardElement.productName,
+          amount: cardElement.totalPrice,
         }
       );
       console.log(response.data);
@@ -30,7 +30,7 @@ const CheckOutForm = () => {
         setCompleted(true);
       }
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   };
 
