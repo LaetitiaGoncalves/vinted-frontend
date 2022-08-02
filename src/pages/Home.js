@@ -3,7 +3,7 @@ import axios from "axios";
 
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ token }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
@@ -28,16 +28,23 @@ const Home = () => {
       <main>
         <section className="main-section">
           <div className="banner">
-            <div className="banner-content">
+            <div className="banner-content container">
               <h1>Prêts à faire du tri dans vos placards ?</h1>
-              <Link to={"/publish"}>
-                <button>Vends maintenant</button>
-              </Link>
+              {token === null ? (
+                <button>
+                  <Link to={"/login"}>Commencer à vendre </Link>
+                </button>
+              ) : (
+                <button>
+                  <Link to={"/publish"}>Commencer à vendre </Link>
+                </button>
+              )}
+
               <p>Découvrir comment ça marche</p>
             </div>
           </div>
         </section>
-        <section className="offers-section">
+        <section className="offers-section container">
           <h2>Articles populaires</h2>
           <div className="offers-container">
             {data.offers.map((offer, index) => {

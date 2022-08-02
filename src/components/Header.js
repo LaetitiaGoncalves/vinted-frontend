@@ -27,9 +27,12 @@ const Header = ({ token, setUser }) => {
     }
   };
   return (
-    <header>
+    <header className="container">
       <div className="top-header">
-        <img src={logo} alt="logo Vinted" />
+        <Link to="/">
+          <img src={logo} alt="logo Vinted" />
+        </Link>
+
         <input
           type="text"
           placeholder="Rechercher"
@@ -45,20 +48,26 @@ const Header = ({ token, setUser }) => {
             <button>
               <Link to="/signup">S'inscrire</Link>
             </button>
+
+            <button className="btn-sell">
+              <Link to={"/login"}>Vends maintenant</Link>
+            </button>
           </div>
         ) : (
-          <button
-            onClick={() => {
-              setUser(null);
-              navigate("/");
-            }}
-          >
-            Se déconnecter
-          </button>
+          <>
+            <button
+              onClick={() => {
+                setUser(null);
+                navigate("/");
+              }}
+            >
+              Se déconnecter
+            </button>
+            <button className="btn-sell">
+              <Link to={"/publish"}>Vends maintenant</Link>
+            </button>
+          </>
         )}
-        <Link to={"/publish"}>
-          <button className="btn-sell">Vends maintenant</button>
-        </Link>
       </div>
       <div className="bottom-header">
         <ul>
