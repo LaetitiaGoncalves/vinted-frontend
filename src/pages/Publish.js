@@ -53,7 +53,7 @@ const Publish = ({ token, setUser }) => {
   };
 
   return (
-    <div>
+    <div className="container publish-page">
       <h1>Vends ton article</h1>
       <div className="publish-form">
         <form onSubmit={handleSentPicture}>
@@ -127,7 +127,7 @@ const Publish = ({ token, setUser }) => {
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
-          <input type="submit" />
+          <input type="submit" className="submit-publish" />
         </form>
       </div>
     </div>

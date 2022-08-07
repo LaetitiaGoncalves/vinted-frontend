@@ -40,7 +40,7 @@ const App = () => {
             path="/publish"
             element={<Publish token={token} setUser={setUser} />}
           />
-          <Route path="/payment" element={<Payment />}></Route>
+          <Route path="/payment" element={<Payment />} />
         </Routes>
       </Router>
     </div>

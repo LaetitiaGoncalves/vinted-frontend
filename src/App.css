@@ -76,14 +76,6 @@ body {
     color: white;
 }
 
-.offers-container {
-    width: 1280px;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 20px auto;
-  
-}
-
 .card {
     width: 235px;
     padding: 0 6px 16px;
@@ -101,12 +93,6 @@ body {
     margin: 0px 0px;
 }
 
-.signup-form {
-    display: flex;
-    flex-direction: column;
-    margin: 20px auto;
-    width: 50%;
-}
 
 .top-header {
     display: flex;
@@ -135,18 +121,19 @@ body {
 .btn-sell a {
     background-color: #0CB0BA;
     color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
 }
 
 
-.publish-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* Offer Page */
 
-}
-.publish-form form {
+.offers-container {
+    width: 1280px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 20px auto;
+  
 }
 
 .offers-section h2 {
@@ -162,4 +149,199 @@ line-height: 20px;
 
 .offers-container {
     align-items: center;
+    justify-content: space-between;
+}
+
+.offer-page {
+    display: flex;
+    padding: 50px 50px;
+    border: 2px solid #0CB0BA;
+    border-radius: 10px;
+    justify-content: center;
+    width: 800px;
+    margin-top: 50px;
+
+   
+   
+}
+
+.offer-page img {
+   margin-right: 50px;
+}
+
+.offer-infos h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.offer-infos p {
+    margin-bottom: 10px;
+}
+
+.offer-page button {
+    background-color: #0CB0BA;
+    padding: 10px 30px;
+    border-radius: 6px;
+    margin-top: 20px;
+}
+
+.offer-page a {
+    color: white;
+}
+
+.offer-page button:hover {
+    background-color: white;
+    border: 1px solid #0CB0BA;
+}
+
+.offer-page a:hover {
+    color: #0CB0BA;
+}
+
+/* Page Signup */
+
+.signup-page h1 {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.signup-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    margin: 30px auto;
+    width: 50%;
+    background-color: #0CB0BA;
+    padding: 50px 50px;
+   align-items: center;
+   width: 350px;
+}
+
+.signup-form input {
+    width: 200px;
+    margin: 10px 0;
+    padding: 5px 5px;
+}
+
+.checkbox {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px 0;
+    width: 400px;
+  
+}
+.checkbox input {
+    width: 8%;
+    margin: 0px 10px 0px 0px;
+}
+
+.checkbox label{
+    font-size: 15px;
+}
+
+.signup-page p {
+ width: 400px;
+ font-size: 15px;
+ margin: 10px 0;
+ line-height: 20px;
+}
+
+.signup-form .signup-input {
+    cursor: pointer;
+    border: none;
+    width: 100px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+/* Login page */
+
+.login-page {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+}
+
+.login-page h1 {
+    font-size: 24px;
+    margin: 30px 0;
+}
+
+.login-page form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin-bottom: 20px;
+    background-color: #0CB0BA;
+    padding: 50px 50px;
+    align-items: center;
+  
+}
+
+.login-page input {
+    margin: 10px 0px;
+    width: 200px;
+
+}
+
+.login-page .submitinput-login {
+    cursor: pointer;
+    border: none;
+    width: 100px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+/* Publish page */
+
+.publish-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.publish-page h1 {
+ font-size: 24px;
+ margin: 30px 0;
+}
+
+.publish-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0CB0BA;
+    width: 300px;
+    padding: 50px 50px;
+
+}
+.publish-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+
+}
+
+.publish-form input {
+    margin-bottom: 10px;  
+    width: 200px;
+}
+
+.publish-form .submit-publish {
+    cursor: pointer;
+    border: none;
+    width: 100px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-top: 10px;
 }

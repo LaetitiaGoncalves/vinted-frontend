@@ -37,7 +37,7 @@ const Signup = ({ setUser }) => {
     }
   };
   return (
-    <div>
+    <div className="container signup-page">
       <h1>S'inscrire</h1>
       <form className="signup-form" onSubmit={handleSignup}>
         <input
@@ -81,7 +81,7 @@ const Signup = ({ setUser }) => {
           Conditions et Politique de Confidentialité de Vinted. Je confirme
           avoir au moins 18 ans.
         </p>
-        <input type="submit" value="S'inscrire" />
+        <input type="submit" value="S'inscrire" className="signup-input" />
 
         <p style={{ color: "red" }}>{errorMessage}</p>
       </form>
