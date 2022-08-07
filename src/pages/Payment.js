@@ -14,13 +14,14 @@ function Payment() {
   return (
     <div className="container payment-page">
       <h1>Résumé de la commande</h1>
-      <img src={image} alt="" />
-      <p>{title}</p>
-      <p>{amount} €</p>
-
-      <Elements stripe={stripePromise}>
-        <CheckoutForm amount={amount} title={title} image={image} />
-      </Elements>
+      <div className="image-and-payment">
+        <img src={image} alt="" />
+        <p>{title}</p>
+        <p>{amount} €</p>
+        <Elements stripe={stripePromise}>
+          <CheckoutForm amount={amount} title={title} image={image} />
+        </Elements>
+      </div>
     </div>
   );
 }
