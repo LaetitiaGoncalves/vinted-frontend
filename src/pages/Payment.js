@@ -16,11 +16,13 @@ function Payment() {
       <h1>Résumé de la commande</h1>
       <div className="image-and-payment">
         <img src={image} alt="" />
-        <p>{title}</p>
-        <p>{amount} €</p>
-        <Elements stripe={stripePromise}>
-          <CheckoutForm amount={amount} title={title} image={image} />
-        </Elements>
+        <div className="texts-payment">
+          <p>{title}</p>
+          <p>{amount} €</p>
+          <Elements stripe={stripePromise}>
+            <CheckoutForm amount={amount} title={title} image={image} />
+          </Elements>
+        </div>
       </div>
     </div>
   );
