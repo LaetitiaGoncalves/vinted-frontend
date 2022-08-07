@@ -383,7 +383,6 @@ border-radius: 6px;
 
 .image-and-payment {
     display: flex;
-    flex-direction: column;
     
 }
 
