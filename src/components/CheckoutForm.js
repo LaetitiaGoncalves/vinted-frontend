@@ -3,7 +3,7 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 
 import axios from "axios";
 
-const CheckOutForm = ({ amount, title }) => {
+const CheckOutForm = ({ amount, title, image }) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -22,6 +22,7 @@ const CheckOutForm = ({ amount, title }) => {
           token: stripeResponse.token.id,
           title: title,
           amount: amount,
+          image: image,
         }
       );
       console.log(response.data);
@@ -39,7 +40,7 @@ const CheckOutForm = ({ amount, title }) => {
       {completed ? (
         <h1>Payment confirmé ! </h1>
       ) : (
-        <form onSubmit={handlePayment}>
+        <form onSubmit={handlePayment} className="payment-form">
           <CardElement />
           <input type="submit" value="Payer" />
         </form>
