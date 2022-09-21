@@ -34,7 +34,7 @@ const Publish = ({ token }) => {
         formData,
         {
           headers: {
-            authorization: "Bearer" + token,
+            Authorization: "Bearer " + token,
             "Content-Type": "multipart/form-data",
           },
         }

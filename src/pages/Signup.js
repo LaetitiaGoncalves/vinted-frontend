@@ -26,7 +26,7 @@ const Signup = ({ setUser }) => {
           newsletter: newsletter,
         }
       );
-      if (response.data) {
+      if (response.data.token) {
         setUser(response.data.token);
         navigate("/");
       }

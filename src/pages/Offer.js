@@ -32,11 +32,11 @@ const Offer = () => {
         <p>PRIX: {data.product_price} €</p>
 
         <div>
-          {data.product_details.map((item) => {
+          {data.product_details.map((item, index) => {
             //   console.log(Object.keys(item));
             const keys = Object.keys(item);
             return (
-              <p>
+              <p key={index}>
                 {keys[0]} : {item[keys[0]]}
               </p>
             );

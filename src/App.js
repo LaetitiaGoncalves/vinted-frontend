@@ -16,15 +16,16 @@ import Payment from "./pages/Payment";
 import Header from "./components/Header";
 
 const App = () => {
-  const [token, setToken] = useState(Cookies.get("userToken") || null);
+  const [token, setToken] = useState(Cookies.get("token") || null);
 
-  const setUser = (tokenToCheck) => {
-    if (tokenToCheck !== null) {
-      Cookies.set("userToken", tokenToCheck, { expires: 7 });
+  const setUser = (token) => {
+    if (token) {
+      setToken(token);
+      Cookies.set("token", token, { expires: 7 });
     } else {
-      Cookies.remove("userToken");
+      setToken(null);
+      Cookies.remove("token");
     }
-    setToken(tokenToCheck);
   };
 
   return (
