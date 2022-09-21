@@ -33,7 +33,6 @@ const Offer = () => {
 
         <div>
           {data.product_details.map((item, index) => {
-            //   console.log(Object.keys(item));
             const keys = Object.keys(item);
             return (
               <p key={index}>

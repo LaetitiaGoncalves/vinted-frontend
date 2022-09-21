@@ -117,7 +117,13 @@ body {
     color: #0CB0BA;
     cursor: pointer;
 }
-
+.deconnexion-button {
+    background-color: #D04455;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
 .btn-sell a {
     background-color: #0CB0BA;
     color: white;
@@ -142,9 +148,22 @@ body {
     margin-top: 20px;
 }
 
-.card h2{
-font-size: 12px;
-line-height: 20px;
+
+.card h3{
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+
+.card p{
+    font-size: 11px;
+    line-height: 20px;
+    color: rgb(62, 62, 62);
+}
+
+.card .offer-price {
+    font-size: 14px;
+    color: black;
 }
 
 .offers-container {
@@ -198,6 +217,27 @@ line-height: 20px;
 
 .offer-page a:hover {
     color: #0CB0BA;
+}
+
+.avatar-and-username {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.avatar-and-username img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100px;
+    margin-right: 10px;
+}
+
+.details p {
+    font-size: 11px;
+    line-height: 15px;
+    color: rgb(62, 62, 62);
 }
 
 /* Page Signup */
@@ -323,15 +363,22 @@ line-height: 20px;
     align-items: center;
     background-color: #0CB0BA;
     width: 300px;
-    padding: 50px 50px;
+    border-radius: 6px;
+    padding: 30px 50px;
 
+}
+
+.publish-form img {
+    width: 20%;
+    margin-bottom: 10px;
 }
 .publish-form form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-  
+}
 
+.publish-form h2 {
+    margin-bottom: 5px;
 }
 
 .publish-form input {

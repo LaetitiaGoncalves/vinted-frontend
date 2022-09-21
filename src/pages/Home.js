@@ -51,8 +51,20 @@ const Home = ({ token }) => {
               return (
                 <Link to={`/offer/${offer._id}`} key={index}>
                   <div className="card">
-                    <h2>{offer.product_name}</h2>
+                    <div className="avatar-and-username">
+                      <img src={offer.owner.account.avatar.secure_url} alt="" />
+                      <p>{offer.owner.account.username}</p>
+                    </div>
                     <img src={offer.product_image.secure_url} alt="" />
+                    <p className="offer-price">{offer.product_price} €</p>
+                    {offer.product_details.map((details, index) => {
+                      return (
+                        <div key={index} className="details">
+                          <p>{details.MARQUE}</p>
+                          <p>{details.TAILLE}</p>
+                        </div>
+                      );
+                    })}
                   </div>
                 </Link>
               );

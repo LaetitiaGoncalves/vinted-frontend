@@ -60,6 +60,7 @@ const Header = ({ token, setUser }) => {
                 setUser(null);
                 navigate("/");
               }}
+              className="deconnexion-button"
             >
               Se déconnecter
             </button>

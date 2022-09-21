@@ -6,6 +6,8 @@ const Signup = ({ setUser }) => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [avatar, setAvatar] = useState({});
+  const [preview, setPreview] = useState(null);
   const [newsletter, setNewsletter] = useState(false);
 
   const navigate = useNavigate();
@@ -15,16 +17,16 @@ const Signup = ({ setUser }) => {
   const handleSignup = async (event) => {
     try {
       event.preventDefault();
+      const formData = new FormData();
+      formData.append("avatar", avatar);
+      formData.append("username", username);
+      formData.append("email", email);
+      formData.append("password", password);
       setErrorMessage("");
 
       const response = await axios.post(
         "https://vinted-api-laetitia-goncalves.herokuapp.com/user/signup",
-        {
-          email: email,
-          username: username,
-          password: password,
-          newsletter: newsletter,
-        }
+        formData
       );
       if (response.data.token) {
         setUser(response.data.token);
@@ -81,6 +83,23 @@ const Signup = ({ setUser }) => {
           Conditions et Politique de Confidentialité de Vinted. Je confirme
           avoir au moins 18 ans.
         </p>
+        <div className="addPhoto">
+          {avatar ? (
+            <>
+              <input
+                type="file"
+                onChange={(event) => {
+                  setAvatar(event.target.files[0]);
+                  setPreview(URL.createObjectURL(event.target.files[0]));
+                }}
+              />
+
+              <img src={preview} alt="" style={{ width: "50px" }} />
+            </>
+          ) : (
+            <p>No file selected</p>
+          )}
+        </div>
         <input type="submit" value="S'inscrire" className="signup-input" />
 
         <p style={{ color: "red" }}>{errorMessage}</p>
