@@ -108,26 +108,21 @@ const Publish = ({ token }) => {
             onChange={(e) => setColor(e.target.value)}
           />
           <h2>État</h2>
-          <select>
-            <option
-              value={condition}
-              onSelect={(e) => setCondition(e.target.value)}
-            >
-              Neuf
-            </option>
-            <option
-              value={condition}
-              onSelect={(e) => setCondition(e.target.value)}
-            >
-              Bon état
-            </option>
-            <option
-              value={condition}
-              onSelect={(e) => setCondition(e.target.value)}
-            >
-              Satisfaisant
-            </option>
-          </select>
+          <input
+            type="text"
+            name="condition"
+            placeholder="Bon état"
+            value={condition}
+            onChange={(e) => setCondition(e.target.value)}
+          />
+          {/* <select
+            value={condition}
+            onChange={(e) => setCondition(e.target.value)}
+          >
+            <option>Neuf</option>
+            <option>Bon état</option>
+            <option>Satisfaisant</option>
+          </select> */}
           <h2>Lieu</h2>
           <input
             type="text"
