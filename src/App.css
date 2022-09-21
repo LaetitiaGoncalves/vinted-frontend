@@ -149,7 +149,10 @@ line-height: 20px;
 
 .offers-container {
     align-items: center;
-    justify-content: space-between;
+}
+
+.offers-container a:not(:last-child){
+    margin-right: 5%;
 }
 
 .offer-page {
@@ -161,12 +164,11 @@ line-height: 20px;
     width: 800px;
     margin-top: 50px;
 
-   
-   
 }
 
 .offer-page img {
    margin-right: 50px;
+   width: 50%;
 }
 
 .offer-infos h2 {
@@ -384,7 +386,12 @@ cursor: pointer;
 
 .image-and-payment {
     display: flex;
+    justify-content: center;
     
+}
+
+.image-and-payment img {
+    width: 25%;
 }
 
 .texts-payment {

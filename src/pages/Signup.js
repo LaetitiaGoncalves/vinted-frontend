@@ -18,7 +18,7 @@ const Signup = ({ setUser }) => {
       setErrorMessage("");
 
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+        "https://vinted-api-laetitia-goncalves.herokuapp.com/user/signup",
         {
           email: email,
           username: username,

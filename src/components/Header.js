@@ -14,7 +14,7 @@ const Header = ({ token, setUser }) => {
       event.preventDefault();
 
       const response = await axios.post(
-        `https://lereacteur-vinted-api.herokuapp.com/offers/${offerSearch}`
+        `https://vinted-api-laetitia-goncalves.herokuapp.com/offers/${offerSearch}`
       );
       if (response.data) {
         setData(response.data);

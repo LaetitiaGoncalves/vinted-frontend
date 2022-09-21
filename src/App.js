@@ -36,11 +36,8 @@ const App = () => {
           <Route path="/offer/:offerId" element={<Offer />} />
           <Route path="/signup" element={<Signup setUser={setUser} />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
-          <Route
-            path="/publish"
-            element={<Publish token={token} setUser={setUser} />}
-          />
-          <Route path="/payment" element={<Payment />} />
+          <Route path="/publish" element={<Publish token={token} />} />
+          <Route path="/payment" element={<Payment token={token} />} />
         </Routes>
       </Router>
     </div>

@@ -10,9 +10,9 @@ const Home = ({ token }) => {
     try {
       const fetchOffers = async () => {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers"
+          "https://vinted-api-laetitia-goncalves.herokuapp.com/offers"
         );
-        // console.log(response.data);
+        console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       };
@@ -47,10 +47,10 @@ const Home = ({ token }) => {
         <section className="offers-section container">
           <h2>Articles populaires</h2>
           <div className="offers-container">
-            {data.offers.map((offer, index) => {
+            {data.map((offer, index) => {
               return (
-                <Link to={`/offer/${offer._id}`}>
-                  <div className="card" key={index}>
+                <Link to={`/offer/${offer._id}`} key={index}>
+                  <div className="card">
                     <h2>{offer.product_name}</h2>
                     <img src={offer.product_image.secure_url} alt="" />
                   </div>

@@ -1,10 +1,9 @@
 import { useState } from "react";
+import { useNavigate, Navigate } from "react-router-dom";
 import axios from "axios";
 
-const Publish = ({ token, setUser }) => {
+const Publish = ({ token }) => {
   const [picture, setPicture] = useState(null);
-  const [data, setData] = useState(null);
-  const [isPictureSending, setIsPictureSending] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -13,11 +12,12 @@ const Publish = ({ token, setUser }) => {
   const [brand, setBrand] = useState("");
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
+  const [preview, setPreview] = useState("");
+  const navigate = useNavigate();
 
-  const handleSentPicture = async (event) => {
+  const handlePublish = async (event) => {
     try {
       event.preventDefault();
-      setIsPictureSending(true);
       const formData = new FormData();
       formData.append("picture", picture);
       formData.append("title", title);
@@ -30,45 +30,41 @@ const Publish = ({ token, setUser }) => {
       formData.append("color", color);
 
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
-
+        "https://vinted-api-laetitia-goncalves.herokuapp.com/offer/publish",
         formData,
-
         {
           headers: {
-            authorization: `Bearer ${token}`,
+            authorization: "Bearer" + token,
             "Content-Type": "multipart/form-data",
           },
         }
       );
 
-      setUser(response.data.token);
-      alert("image envoyée");
-      console.log(response.data);
-      setData(response.data);
-      setIsPictureSending(false);
+      if (response.data._id) {
+        navigate(`/offer/${response.data._id}`);
+      } else {
+        alert("Une erreur est survenue, veuillez réssayer");
+      }
+      alert("Offre publiée avec succès !");
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  return (
+  return token ? (
     <div className="container publish-page">
       <h1>Vends ton article</h1>
       <div className="publish-form">
-        <form onSubmit={handleSentPicture}>
+        <form onSubmit={handlePublish}>
           <input
             onChange={(event) => {
-              console.log(event.target.files[0]);
               setPicture(event.target.files[0]);
+              setPreview(URL.createObjectURL(event.target.files[0]));
             }}
             type="file"
           />
-          {isPictureSending === true ? (
-            <h1>Image en cours d'uplaod</h1>
-          ) : (
-            data && <img src={data.picture} style={{ width: "200px" }} alt="" />
-          )}
+          <img src={preview} alt="" />
+
           <input
             type="text"
             name="title"
@@ -131,6 +127,8 @@ const Publish = ({ token, setUser }) => {
         </form>
       </div>
     </div>
+  ) : (
+    <Navigate to="/login" />
   );
 };
 

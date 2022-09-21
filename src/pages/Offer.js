@@ -13,9 +13,9 @@ const Offer = () => {
   useEffect(() => {
     const fetchOffer = async () => {
       const response = await axios.get(
-        `https://lereacteur-vinted-api.herokuapp.com/offer/${offerId}`
+        `https://vinted-api-laetitia-goncalves.herokuapp.com/offer/${offerId}`
       );
-      //   console.log(response.data);
+      console.log(response.data);
       setData(response.data);
       setIsLoading(false);
     };
@@ -29,7 +29,7 @@ const Offer = () => {
 
       <div className="offer-infos">
         <h2> {data.product_name}</h2>
-        <p>{data.product_price} €</p>
+        <p>PRIX: {data.product_price} €</p>
 
         <div>
           {data.product_details.map((item) => {

@@ -12,7 +12,7 @@ const Login = ({ setUser }) => {
     try {
       event.preventDefault();
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/login",
+        "https://vinted-api-laetitia-goncalves.herokuapp.com/user/login",
         {
           email: email,
           password: password,
