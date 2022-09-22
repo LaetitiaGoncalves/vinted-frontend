@@ -3,7 +3,7 @@ import { useNavigate, Navigate } from "react-router-dom";
 import axios from "axios";
 
 const Publish = ({ token }) => {
-  const [picture, setPicture] = useState(null);
+  const [picture, setPicture] = useState({});
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -12,7 +12,7 @@ const Publish = ({ token }) => {
   const [brand, setBrand] = useState("");
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
-  const [preview, setPreview] = useState("");
+  const [preview, setPreview] = useState(null);
   const navigate = useNavigate();
 
   const handlePublish = async (event) => {
@@ -34,12 +34,12 @@ const Publish = ({ token }) => {
         formData,
         {
           headers: {
-            Authorization: "Bearer " + token,
+            authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",
           },
         }
       );
-
+      console.log(response.data);
       if (response.data._id) {
         navigate(`/offer/${response.data._id}`);
       } else {
@@ -64,7 +64,10 @@ const Publish = ({ token }) => {
             }}
             type="file"
           />
-          <img src={preview} alt="" />
+          <p style={{ color: "white", fontSize: 12 }}>
+            Format accepté: jpeg ou jpg
+          </p>
+          <img src={preview} alt="" style={{ marginTop: 10 }} />
           <h2>Titre</h2>
           <input
             type="text"
@@ -108,21 +111,14 @@ const Publish = ({ token }) => {
             onChange={(e) => setColor(e.target.value)}
           />
           <h2>État</h2>
-          <input
-            type="text"
-            name="condition"
-            placeholder="Bon état"
-            value={condition}
-            onChange={(e) => setCondition(e.target.value)}
-          />
-          {/* <select
+          <select
             value={condition}
             onChange={(e) => setCondition(e.target.value)}
           >
             <option>Neuf</option>
             <option>Bon état</option>
             <option>Satisfaisant</option>
-          </select> */}
+          </select>
           <h2>Lieu</h2>
           <input
             type="text"

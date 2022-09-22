@@ -3,11 +3,14 @@ import logo from "../img/logo.svg";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import MenuBurger from "../components/MenuBurger";
 
 const Header = ({ token, setUser }) => {
   const navigate = useNavigate();
   const { offerSearch } = useParams();
   const [data, setData] = useState();
+
+  const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
   const handleSearch = async (event) => {
     try {
@@ -26,6 +29,10 @@ const Header = ({ token, setUser }) => {
       }
     }
   };
+
+  const handleToggle = () => {
+    setHamburgerOpen(!hamburgerOpen);
+  };
   return (
     <header className="container">
       <div className="top-header">
@@ -40,36 +47,75 @@ const Header = ({ token, setUser }) => {
           onChange={handleSearch}
           className="search"
         />
-        {token === null ? (
-          <div className="connect">
-            <button>
-              <Link to="/login">Se connecter</Link>
-            </button>
-            <button>
-              <Link to="/signup">S'inscrire</Link>
-            </button>
+        <div className="menu-burger" onClick={handleToggle}>
+          <MenuBurger />
+        </div>
+        {hamburgerOpen && (
+          <div>
+            {token === null ? (
+              <div className="connect">
+                <button>
+                  <Link to="/login">Se connecter</Link>
+                </button>
+                <button>
+                  <Link to="/signup">S'inscrire</Link>
+                </button>
 
-            <button className="btn-sell">
-              <Link to={"/login"}>Vends maintenant</Link>
-            </button>
+                <button className="btn-sell">
+                  <Link to={"/login"}>Vends maintenant</Link>
+                </button>
+              </div>
+            ) : (
+              <>
+                <button
+                  onClick={() => {
+                    setUser(null);
+                    navigate("/");
+                  }}
+                  className="deconnexion-button"
+                >
+                  Se déconnecter
+                </button>
+                <button className="btn-sell">
+                  <Link to={"/publish"}>Vends maintenant</Link>
+                </button>
+              </>
+            )}
           </div>
-        ) : (
-          <>
-            <button
-              onClick={() => {
-                setUser(null);
-                navigate("/");
-              }}
-              className="deconnexion-button"
-            >
-              Se déconnecter
-            </button>
-            <button className="btn-sell">
-              <Link to={"/publish"}>Vends maintenant</Link>
-            </button>
-          </>
         )}
+        <div className="nav">
+          {token === null ? (
+            <div className="connect">
+              <button>
+                <Link to="/login">Se connecter</Link>
+              </button>
+              <button>
+                <Link to="/signup">S'inscrire</Link>
+              </button>
+
+              <button className="btn-sell">
+                <Link to={"/login"}>Vends maintenant</Link>
+              </button>
+            </div>
+          ) : (
+            <>
+              <button
+                onClick={() => {
+                  setUser(null);
+                  navigate("/");
+                }}
+                className="deconnexion-button"
+              >
+                Se déconnecter
+              </button>
+              <button className="btn-sell">
+                <Link to={"/publish"}>Vends maintenant</Link>
+              </button>
+            </>
+          )}
+        </div>
       </div>
+
       <div className="bottom-header">
         <ul>
           <li>

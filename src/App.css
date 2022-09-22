@@ -385,6 +385,10 @@ body {
     margin-bottom: 10px;  
     width: 200px;
 }
+.publish-form select {
+    margin-bottom: 10px;  
+ 
+}
 
 .publish-form .submit-publish {
     cursor: pointer;
@@ -445,4 +449,70 @@ cursor: pointer;
     display: flex;
     flex-direction: column;
     margin-left: 30px;
+}
+.hamburger{
+    display: none;
+    z-index: 6;
+} 
+
+
+
+
+
+/* ----------------------------------------------- */
+
+/* Responsive */
+
+@media (max-width: 885px) {
+   
+    /* Homepage */
+
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0px 20px 0px 20px;
+}
+
+/* Header */
+
+.search {
+    width: 100px;
+    height: 25px;
+}
+.deconnexion-button {
+   font-size: 10px;
+}
+
+.btn-sell a {
+    font-size: 10px;
+}
+
+.top-header img {
+    width: 50px;
+}
+
+.nav {
+    display: none;
+}
+
+.hamburger{
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column nowrap;
+    z-index: 10;
+}
+.burger{
+    width: 2rem;
+    height: 0.25rem;
+    border-radius: 10px;
+    background-color: black;
+    transform-origin: 1px;
+    transition: all 0.3s linear;
+}
+
+
+
 }

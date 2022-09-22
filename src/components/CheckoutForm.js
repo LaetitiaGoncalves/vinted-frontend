@@ -12,8 +12,8 @@ const CheckOutForm = ({ amount, title, image }) => {
   const [completed, setCompleted] = useState(false);
 
   const handlePayment = async (event) => {
-    event.preventDefault();
     try {
+      event.preventDefault();
       const cardElement = elements.getElement(CardElement);
 
       const stripeResponse = await stripe.createToken(cardElement, {
@@ -30,11 +30,12 @@ const CheckOutForm = ({ amount, title, image }) => {
           image: image,
         }
       );
-      console.log(response.data);
+
       if (response.data) {
         console.log("Paiement réussi");
         alert("Paiement accepté");
         setCompleted(true);
+
         navigate("/");
       } else {
         alert("Erreur de paiement");
@@ -48,7 +49,7 @@ const CheckOutForm = ({ amount, title, image }) => {
     <div>
       {completed ? (
         <div>
-          <h1>Payment confirmé ! </h1>
+          <h1>Payment accepté ! </h1>
         </div>
       ) : (
         <form onSubmit={handlePayment} className="payment-form">
