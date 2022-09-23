@@ -609,7 +609,14 @@ cursor: pointer;
     border-radius: 100px;
     margin-right: 10px;
 }
+.offers-container a:not(:last-child) {
+    margin-right: 0;
+}
 
+.card {
+    width: 100%;
+    padding: 10px 10px;
+}
 /* Signup page */
 
 .signup-form {
