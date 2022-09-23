@@ -8,8 +8,6 @@ const Offer = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
-  //   console.log(offerId);
-
   useEffect(() => {
     const fetchOffer = async () => {
       const response = await axios.get(

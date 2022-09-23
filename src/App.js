@@ -36,7 +36,7 @@ const App = () => {
     try {
       const fetchOffers = async () => {
         const response = await axios.get(
-          `http://localhost:3000/offers?search=${search}`
+          `https://vinted-api-laetitia-goncalves.herokuapp.com/offers?search=${search}`
         );
         setData(response.data);
         setIsLoading(false);

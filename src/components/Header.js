@@ -7,27 +7,8 @@ import MenuBurger from "../components/MenuBurger";
 
 const Header = ({ token, setUser, setSearch }) => {
   const navigate = useNavigate();
-  //   const { offerSearch } = useParams();
 
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
-
-  //   const handleSearch = async (event) => {
-  //     try {
-  //       event.preventDefault();
-
-  //       const response = await axios.post(
-  //         `https://vinted-api-laetitia-goncalves.herokuapp.com/offers/${offerSearch}`
-  //       );
-  //       if (response.data) {
-  //         setData(response.data);
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //       if (error) {
-  //         console.log(error.message);
-  //       }
-  //     }
-  //   };
 
   const handleToggle = () => {
     setHamburgerOpen(!hamburgerOpen);
