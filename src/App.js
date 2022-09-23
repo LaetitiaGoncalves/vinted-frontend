@@ -1,6 +1,7 @@
 import "./App.css";
 import Cookies from "js-cookie";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -17,6 +18,9 @@ import Header from "./components/Header";
 
 const App = () => {
   const [token, setToken] = useState(Cookies.get("token") || null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
 
   const setUser = (token) => {
     if (token) {
@@ -28,12 +32,30 @@ const App = () => {
     }
   };
 
+  useEffect(() => {
+    try {
+      const fetchOffers = async () => {
+        const response = await axios.get(
+          `http://localhost:3000/offers?search=${search}`
+        );
+        setData(response.data);
+        setIsLoading(false);
+      };
+      fetchOffers();
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, [search]);
+
   return (
     <div>
       <Router>
-        <Header token={token} setUser={setUser} />
+        <Header token={token} setUser={setUser} setSearch={setSearch} />
         <Routes>
-          <Route path="/" element={<Home token={token} />} />
+          <Route
+            path="/"
+            element={<Home token={token} data={data} isLoading={isLoading} />}
+          />
           <Route path="/offer/:offerId" element={<Offer />} />
           <Route path="/signup" element={<Signup setUser={setUser} />} />
           <Route path="/login" element={<Login setUser={setUser} />} />

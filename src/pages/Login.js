@@ -30,19 +30,21 @@ const Login = ({ setUser }) => {
     <div className="container login-page">
       <h1>Se connecter</h1>
       <form onSubmit={handleLogin}>
+        <h2>Email</h2>
         <input
           type="email"
           name="email"
           id="email"
-          placeholder="Email"
+          placeholder="marie@mail.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        <h2>Mot de passe</h2>
         <input
           type="password"
           name="password"
           id="password"
-          placeholder="Mot de passe"
+          placeholder="****"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />

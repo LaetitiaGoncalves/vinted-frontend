@@ -5,6 +5,7 @@ import axios from "axios";
 const Signup = ({ setUser }) => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState({});
   const [preview, setPreview] = useState(null);
@@ -24,6 +25,8 @@ const Signup = ({ setUser }) => {
       formData.append("password", password);
       setErrorMessage("");
 
+      if (email && username && password && avatar) {
+      }
       const response = await axios.post(
         "https://vinted-api-laetitia-goncalves.herokuapp.com/user/signup",
         formData
@@ -42,30 +45,55 @@ const Signup = ({ setUser }) => {
     <div className="container signup-page">
       <h1>S'inscrire</h1>
       <form className="signup-form" onSubmit={handleSignup}>
+        <h2>Nom d'utilisateur</h2>
         <input
           type="text"
           name="username"
           id="username"
-          placeholder="Nom d'utilisateur"
+          placeholder="Marie"
           value={username}
           onChange={(e) => setUserName(e.target.value)}
         />
+        <h2>Email</h2>
         <input
           type="email"
           name="email"
           id="email"
-          placeholder="Email"
+          placeholder="marie@mail.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        <h2>Mot de passe</h2>
         <input
           type="password"
           name="password"
           id="password"
-          placeholder="Mot de passe"
+          placeholder="****"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <h2>Confirmer le mot de passe</h2>
+        <input
+          type="password"
+          name="confirmPassword"
+          id="confirmPassword"
+          placeholder="****"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        {password === confirmPassword ? (
+          ""
+        ) : (
+          <p
+            style={{
+              fontSize: "12px",
+              color: "#aa0000",
+              textAlign: "center",
+            }}
+          >
+            Mots de passe différents
+          </p>
+        )}
 
         <div className="checkbox">
           <input
@@ -86,6 +114,7 @@ const Signup = ({ setUser }) => {
         <div className="addPhoto">
           {avatar ? (
             <>
+              <h2>Choisissez votre avatar</h2>
               <input
                 type="file"
                 onChange={(event) => {
